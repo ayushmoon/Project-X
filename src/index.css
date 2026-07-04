@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Great+Vibes&family=Dancing+Script:wght@400..700&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-cursive: "Dancing Script", "Great Vibes", cursive;
+
+  --color-brand-pink-50: #fff5f6;
+  --color-brand-pink-100: #ffe4e8;
+  --color-brand-pink-200: #fecdd6;
+  --color-brand-pink-300: #fda4af;
+  --color-brand-pink-400: #fb7185;
+  --color-brand-pink-500: #f43f5e;
+  --color-brand-pink-600: #e11d48;
+
+  --color-brand-lavender-50: #faf5ff;
+  --color-brand-lavender-100: #f3e8ff;
+  --color-brand-lavender-200: #e9d5ff;
+  --color-brand-lavender-300: #d8b4fe;
+  --color-brand-lavender-500: #a855f7;
+
+  --color-brand-violet-500: #8b5cf6;
+  --color-brand-violet-600: #7c3aed;
+
+  --color-brand-peach-50: #fffaf0;
+  --color-brand-peach-100: #ffedd5;
+  --color-brand-peach-200: #fed7aa;
+  --color-brand-peach-500: #f97316;
+
+  --background-image-romantic-gradient: linear-gradient(135deg, #eef2ff 0%, #faf5ff 50%, #fff1f2 100%);
+  --background-image-dark-space: linear-gradient(135deg, #090616 0%, #0c081c 50%, #170d24 100%);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-heartbeat: heartbeat 1.5s ease-in-out infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-in: fadeIn 0.8s ease-out forwards;
+}
+
+@layer base {
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    background: var(--background-image-romantic-gradient);
+    color: #3b2d42;
+    overflow-x: hidden;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-image 0.5s ease, background-color 0.5s ease, color 0.3s ease;
+  }
+
+  html.dark,
+  html.dark body {
+    background: var(--background-image-dark-space);
+    color: #cbd5e1;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.2);
+    border-radius: 99px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.4);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.4);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    color: #1e1b4b;
+    transition: color 0.3s ease;
+  }
+
+  html.dark h1,
+  html.dark h2,
+  html.dark h3 {
+    color: #f8fafc;
+  }
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.1);
+  }
+
+  40% {
+    transform: scale(1.03);
+  }
+
+  60% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.05);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .glass-panel {
+  background: rgba(18, 14, 38, 0.7);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.glass-panel-dark {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.08);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .glass-panel-dark {
+  background: rgba(13, 9, 30, 0.55);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .glass-card {
+  background: rgba(24, 18, 48, 0.7);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 10px 25px 0 rgba(139, 92, 246, 0.1);
+  transform: translateY(-4px);
+}
+
+.dark .glass-card:hover {
+  background: rgba(30, 24, 60, 0.85);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 10px 25px 0 rgba(139, 92, 246, 0.35);
+}
+
+/* Custom Gradients */
+.text-romantic-gradient {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-romantic-gradient {
+  background: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #fb923c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Swiper overrides */
+.swiper-pagination-bullet-active {
+  background: #8b5cf6 !important;
+}
+
+/* Interactive helper styles */
+.safe-bottom-padding {
+  padding-bottom: env(safe-area-inset-bottom, 24px);
+}
+
+/* Hide default scrollbar but allow scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Shimmer animation for loading skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .shimmer {
+  background: linear-gradient(90deg, #181430 25%, #251f47 50%, #181430 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* For beautiful floating elements */
+.float-1 {
+  animation: float 7s ease-in-out infinite;
+}
+
+.float-2 {
+  animation: float 5s ease-in-out infinite 1s;
+}
+
+.float-3 {
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+.float-4 {
+  animation: float 6s ease-in-out infinite 3s;
+}
+
+.float-5 {
+  animation: float 9s ease-in-out infinite 0.5s;
+}
+
+/* Custom 3D Card Flipping styling */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Failsafe gradient overrides for light/dark mode */
+.bg-romantic-gradient {
+  background-image: linear-gradient(135deg, #eef2ff 0%, #faf5ff 50%, #fff1f2 100%) !important;
+}
+
+.dark .bg-romantic-gradient {
+  background-image: linear-gradient(135deg, #090616 0%, #0c081c 50%, #170d24 100%) !important;
+}
