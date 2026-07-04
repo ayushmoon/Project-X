@@ -73,7 +73,9 @@ const AppContent: React.FC = () => {
 };
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    return !sessionStorage.getItem('app_loaded_session');
+  });
 
   // Dark mode state lives here at root level, shared via context
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -104,7 +106,12 @@ function App() {
                   transition={{ duration: 0.5 }}
                   className="w-full h-screen"
                 >
-                  <LoadingScreen onFinish={() => setIsLoading(false)} />
+                  <LoadingScreen
+                    onFinish={() => {
+                      sessionStorage.setItem('app_loaded_session', 'true');
+                      setIsLoading(false);
+                    }}
+                  />
                 </motion.div>
               ) : (
                 <motion.div

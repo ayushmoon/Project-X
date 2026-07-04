@@ -16,12 +16,12 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
 
   useEffect(() => {
     // Progress through loading stages
-    const timer1 = setTimeout(() => setStage(1), 1200);
-    const timer2 = setTimeout(() => setStage(2), 2400);
-    const timer3 = setTimeout(() => setStage(3), 3600);
+    const timer1 = setTimeout(() => setStage(1), 300);
+    const timer2 = setTimeout(() => setStage(2), 600);
+    const timer3 = setTimeout(() => setStage(3), 900);
     const timer4 = setTimeout(() => {
       onFinish();
-    }, 4800);
+    }, 1200);
 
     return () => {
       clearTimeout(timer1);
@@ -110,7 +110,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinish }) => {
           <motion.div
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
-            transition={{ duration: 4.5, ease: 'easeInOut' }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
             className="h-full bg-linear-to-r from-brand-violet-600 to-brand-pink-500 dark:from-brand-violet-500 dark:to-brand-pink-400"
           />
         </div>
