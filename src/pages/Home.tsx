@@ -29,10 +29,10 @@ export const Home: React.FC = () => {
   useEffect(() => {
     const loaded = getLoadedPhotos();
     const targetFilenames = [
+      'standing_outdoors.jpg',
       'braids_school_look.jpg',
       'waist_chain_aesthetic.jpg',
       'eyes_close_up.jpg',
-      'standing_outdoors.jpg',
       'brown_shirt_gaze.jpg'
     ];
 
