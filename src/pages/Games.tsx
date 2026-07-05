@@ -283,7 +283,7 @@ export const Games: React.FC = () => {
         spread: 60,
         colors: ['#fda4af', '#fecdd6', '#fff0f2']
       });
-    }, 4000); // matches CSS spin transition time
+    }, 2000); // matches Framer Motion spin transition time
   };
 
   return (
@@ -594,8 +594,8 @@ export const Games: React.FC = () => {
                 </div>
 
                 <motion.div
-                  style={{ rotate: wheelRotation }}
-                  transition={isSpinning ? { duration: 4, ease: [0.15, 0.85, 0.2, 1] } : { duration: 0.1 }}
+                  animate={{ rotate: wheelRotation }}
+                  transition={isSpinning ? { duration: 2, ease: [0.15, 0.85, 0.2, 1] } : { duration: 0.1 }}
                   className="w-60 h-60 rounded-full border-4 border-white dark:border-slate-800 shadow-2xl relative overflow-hidden flex items-center justify-center bg-linear-to-tr from-brand-pink-100 to-brand-lavender-100 dark:from-slate-900 dark:to-slate-950 cursor-pointer"
                   onClick={spinTheWheel}
                 >
